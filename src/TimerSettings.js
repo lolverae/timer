@@ -1,7 +1,9 @@
 import { useState } from "react";
+import QuantityPicker from "./timeSelector";
 
 const TimerSettings = () => {
   const [expoName, setExpoName] = useState("");
+  const [presentatorName, setPresentatorName] = useState("");
   return (
     <div className="timer-settings">
       <form
@@ -17,7 +19,18 @@ const TimerSettings = () => {
             onChange={(e) => setExpoName(e.target.value)}
           />
         </label>
-        <p></p>
+        <label htmlFor="Presentator Name">
+          <input
+            id="presentatorName"
+            placeholder="Tu nombre"
+            value={presentatorName}
+            onChange={(e) => setPresentatorName(e.target.value)}
+          />
+        </label>
+
+        <QuantityPicker min={0} max={60} />
+        <QuantityPicker min={0} max={60} />
+        <p>{expoName}</p>
         <button>Submit</button>
       </form>
     </div>

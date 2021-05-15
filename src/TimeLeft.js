@@ -3,15 +3,13 @@ import { useEffect, useState } from "react";
 import TimerSettings from "./TimerSettings";
 function TimeLeft() {
   const calculateTimeLeft = () => {
-    let year = new Date().getFullYear();
-    const difference = +new Date(`${year}-10-1`) - +new Date();
+    const difference = +new Date(`$2021-10-1`) - +new Date();
     let timeLeft = {};
 
     if (difference > 0) {
       timeLeft = {
-        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-        minutes: Math.floor((difference / 1000 / 60) % 60),
-        seconds: Math.floor((difference / 1000) % 60),
+        minutos: Math.floor((difference / 1000 / 60) % 60),
+        segundos: Math.floor((difference / 1000) % 60),
       };
     }
 
@@ -39,13 +37,14 @@ function TimeLeft() {
       </span>
     );
   });
+
   return (
     <div>
-      <h1>titulo</h1>
-
+      <h1>Lambda Club</h1>
       <h2>La presentación comenzará en:</h2>
-
-      {timerComponents.length ? timerComponents : <span>Time's up!</span>}
+      <p id="displayTimer">
+        {timerComponents.length ? timerComponents : <span>Time's up!</span>}
+      </p>
     </div>
   );
 }
