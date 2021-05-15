@@ -42,9 +42,9 @@ function TimeLeft() {
     <div>
       <h1>Lambda Club</h1>
       <h2>La presentación comenzará en:</h2>
-      <p id="displayTimer">
+      {/* <p id="displayTimer">
         {timerComponents.length ? timerComponents : <span>Time's up!</span>}
-      </p>
+      </p> */}
     </div>
   );
 }

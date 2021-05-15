@@ -11,28 +11,42 @@ const TimerSettings = () => {
           e.preventDefault();
         }}
       >
-        <label htmlFor="Presentation Name">
+        <div class="form">
           <input
+            type="text"
+            name="text"
+            autocomplete="off"
+            required
             id="expoName"
-            placeholder="Coloca el nombre de la presentación"
             value={expoName}
             onChange={(e) => setExpoName(e.target.value)}
           />
-        </label>
-        <label htmlFor="Presentator Name">
+          <label for="text" class="label-name">
+            <span class="content-name">Your Text</span>
+          </label>
+        </div>
+
+        <div class="form">
           <input
+            type="text"
+            name="text"
+            autocomplete="off"
+            required
             id="presentatorName"
-            placeholder="Tu nombre"
             value={presentatorName}
             onChange={(e) => setPresentatorName(e.target.value)}
           />
-        </label>
+          <label for="text" class="label-name">
+            <span class="content-name">Your Text</span>
+          </label>
+        </div>
 
         <QuantityPicker min={0} max={60} />
         <QuantityPicker min={0} max={60} />
-        <p>{expoName}</p>
         <button>Submit</button>
       </form>
+      <p>{expoName}</p>
+      <p>{presentatorName}</p>
     </div>
   );
 };
