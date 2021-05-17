@@ -5,13 +5,13 @@ const TimerSettings = () => {
   const [expoName, setExpoName] = useState("");
   const [presentatorName, setPresentatorName] = useState("");
   return (
-    <div className="timer-settings">
+    <div>
       <form
         onSubmit={(e) => {
           e.preventDefault();
         }}
       >
-        <div className="form">
+        <div className="settings-text-input">
           <input
             type="text"
             name="text"
@@ -25,7 +25,7 @@ const TimerSettings = () => {
           </label>
         </div>
 
-        <div className="form">
+        <div className="settings-text-input">
           <input
             type="text"
             name="text"
@@ -39,9 +39,8 @@ const TimerSettings = () => {
           </label>
         </div>
 
-        <QuantityPicker min={0} max={60} />
-        <QuantityPicker min={0} max={60} />
-        <button className="button">Start</button>
+        <QuantityPicker />
+        <button className="btn">Start</button>
       </form>
       <p>{expoName}</p>
       <p>{presentatorName}</p>

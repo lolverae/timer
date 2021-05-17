@@ -1,10 +1,8 @@
-/* .quantity-picker {
-  display: inline-block;
-  border-radius: 3px;
-  vertical-align: middle;
-}
-.quantity-input:focus {
-  background: red;
+.quantity-picker {
+  width: 50%;
+  margin: auto;
+  color: #333;
+  text-align: center;
 }
 
 .quantity-modifier,
@@ -13,51 +11,20 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  outline: none;
 }
 
-.quantity-modifier {
-  height: 100%;
-  width: 3rem;
-  font-size: 1.5rem;
-  background: #f3f3f3;
-  color: #888;
-  border: 0 solid #dbdbdb;
+.number-input {
+  display: inline-block;
   text-align: center;
-  cursor: pointer;
-}
-.quantity-modifier:hover {
-  background: #dadada;
-  color: #555555;
-}
-
-.quantity-modifier:focus {
-  outline: 0;
-}
-
-.left-modifier {
-  border-radius: 3px 0 0 3px;
-}
-
-.mod-disable {
-  color: #e0e0e0;
-}
-
-.mod-disable:hover {
-  background-color: #f3f3f3 !important;
-  color: #e0e0e0;
-}
-
-.right-modifier {
-  border-radius: 0 3px 3px 0;
-}
-
-.quantity-display {
-  width: 3rem;
-  padding: 0.5rem;
-  font-size: 1.5rem;
+  height: 2em;
+  width: 5rem;
+  font-size: 2rem;
+  background-color: transparent;
   border: 0;
-  border-top: 0 solid #dbdbdb;
-  border-bottom: 0 solid #dbdbdb;
-  text-align: center;
-} */
+  cursor: pointer;
+  /* margin: 10px;
+  padding: 10px; */
+}
+.number-input:hover {
+  color: #eeeeee;
+}
