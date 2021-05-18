@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import TimeLeft from "./TimeLeft";
 import TimerSettings from "./TimerSettings";
-import "./timeSelector.css";
+import "./QuantityPicker.css";
 import "./App.css";
 
 ReactDOM.render(
