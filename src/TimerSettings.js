@@ -1,5 +1,5 @@
 import { useState } from "react";
-import QuantityPicker from "./QuantityPicker";
+import { Link } from "react-router-dom";
 
 const TimerSettings = () => {
   const [expoName, setExpoName] = useState("");
@@ -20,7 +20,7 @@ const TimerSettings = () => {
             name="text"
             required
             id="expoName"
-            autocomplete="off"
+            autoComplete="off"
             value={expoName}
             onChange={(e) => setExpoName(e.target.value)}
           />
@@ -34,7 +34,7 @@ const TimerSettings = () => {
             type="text"
             name="text"
             required
-            autocomplete="off"
+            autoComplete="off"
             id="presentatorName"
             value={presentatorName}
             onChange={(e) => setPresentatorName(e.target.value)}
@@ -43,31 +43,36 @@ const TimerSettings = () => {
             <span className="content-name">Tu nombre</span>
           </label>
         </div>
-        <input
-          className="number-input"
-          type="number"
-          min="0"
-          max="60"
-          name="text"
-          required
-          id="seconds"
-          value={minutes}
-          onChange={(e) => setMinute(e.target.value)}
-        />
-        <input
-          className="number-input"
-          type="number"
-          min="0"
-          max="60"
-          name="text"
-          required
-          id="seconds"
-          value={seconds}
-          onChange={(e) => setSecond(e.target.value)}
-        />
-        <QuantityPicker minutes={minutes} seconds={seconds} />
         {/* <button className="btn">Start</button> */}
       </form>
+      <div></div>
+      <input
+        className="number-input"
+        type="number"
+        min="0"
+        max="60"
+        name="text"
+        required
+        id="seconds"
+        value={minutes}
+        onChange={(e) => setMinute(e.target.value)}
+      />
+      <input
+        className="number-input"
+        type="number"
+        min="0"
+        max="60"
+        name="text"
+        required
+        id="seconds"
+        value={seconds}
+        onChange={(e) => setSecond(e.target.value)}
+      />
+      <div>
+        <Link to="/countdown">
+          <button className="btn">Start</button>
+        </Link>
+      </div>
       <p>{expoName}</p>
       <p>{presentatorName}</p>
     </div>

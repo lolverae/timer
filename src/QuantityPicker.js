@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
-
+// import { Link } from "react-router-dom";
+// import TimerSettings from "./TimerSettings";
 const QuantityPicker = ({ hours = 0, minutes = 0, seconds = 0 }) => {
   const [paused, setPaused] = React.useState(false);
   const [over, setOver] = React.useState(false);
@@ -13,21 +14,17 @@ const QuantityPicker = ({ hours = 0, minutes = 0, seconds = 0 }) => {
   });
 
   const tick = () => {
-    // do nothing if paused or over
     if (paused || over) return;
 
-    // Time up
     if (time.hours === 0 && time.minutes === 0 && time.seconds === 0) {
       setOver(true);
     } else if (time.minutes === 0 && time.seconds === 0) {
-      // decrement hour
       setTime({
         hours: time.hours - 1,
         minutes: 59,
         seconds: 59,
       });
     } else if (time.seconds === 0) {
-      // decrement minute
       setTime({
         hours: time.hours,
         minutes: time.minutes - 1,
@@ -44,15 +41,15 @@ const QuantityPicker = ({ hours = 0, minutes = 0, seconds = 0 }) => {
   };
 
   // Resets to original state
-  const reset = () => {
-    setTime({
-      hours: parseInt(hours),
-      minutes: parseInt(minutes),
-      seconds: parseInt(seconds),
-    });
-    setPaused(false);
-    setOver(false);
-  };
+  // const reset = () => {
+  //   setTime({
+  //     hours: parseInt(hours),
+  //     minutes: parseInt(minutes),
+  //     seconds: parseInt(seconds),
+  //   });
+  //   setPaused(false);
+  //   setOver(false);
+  // };
 
   useEffect(() => {
     // Works similar to componentDidMount
@@ -94,11 +91,13 @@ const QuantityPicker = ({ hours = 0, minutes = 0, seconds = 0 }) => {
         .padStart(2, "0")}`}</p>
       <div>{over ? "Time's up!" : ""}</div>
       <button className="btn" onClick={() => setPaused(!paused)}>
-        {paused ? "Start" : "Pause"}
+        {paused ? "Resume" : "Pause"}
       </button>
-      <button className="btn" onClick={() => reset()}>
-        Restart
-      </button>
+      {/* <Link to="/countdown">
+        <button className="btn" onClick={() => reset()}>
+          Restart
+        </button>
+      </Link> */}
     </div>
   );
 };
