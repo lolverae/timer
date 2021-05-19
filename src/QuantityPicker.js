@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 // import { Link } from "react-router-dom";
 // import TimerSettings from "./TimerSettings";
-const QuantityPicker = ({ hours = 0, minutes = 0, seconds = 0 }) => {
+const QuantityPicker = ({ hours = 0, minutes = 1, seconds = 10 }) => {
   const [paused, setPaused] = React.useState(false);
   const [over, setOver] = React.useState(false);
   // const [seconds, setSecond] = useState(0);
@@ -101,77 +101,7 @@ const QuantityPicker = ({ hours = 0, minutes = 0, seconds = 0 }) => {
     </div>
   );
 };
-// const QuantityPicker = () => {
-//   const [second, setSecond] = useState(0);
-//   const [minute, setMinute] = useState(0);
-//   const [isActive, setIsActive] = useState(false);
-//   const [counter, setCounter] = useState();
 
-//   useEffect(() => {
-//     let intervalId;
-
-//     if (isActive) {
-//       intervalId = setInterval(() => {
-//         const secondCounter = counter % 60;
-//         const minuteCounter = Math.floor(counter / 60);
-
-//         let computedSecond =
-//           String(secondCounter).length === 1
-//             ? `0${secondCounter}`
-//             : secondCounter;
-//         let computedMinute =
-//           String(minuteCounter).length === 1
-//             ? `0${minuteCounter}`
-//             : minuteCounter;
-
-//         setSecond(computedSecond);
-//         setMinute(computedMinute);
-//         if (counter === 0) {
-//           stopTimer();
-//         }
-//         setCounter((counter) => counter - 1);
-//       }, 1000);
-//     }
-
-//     return () => clearInterval(intervalId);
-//   }, [isActive, counter]);
-
-//   function stopTimer() {
-//     setIsActive(false);
-//     setCounter(0);
-//     setSecond("00");
-//     setMinute("00");
-//   }
-
-//   return (
-//     <div>
-//       <div>
-//         <span>{minute}</span>
-//         <span>:</span>
-//         <span>{second}</span>
-//         <input
-//           className="number-input"
-//           type="number"
-//           min="0"
-//           max="100"
-//           name="text"
-//           required
-//           id="seconds"
-//           value={second}
-//           onChange={(e) => setSecond(e.target.value)}
-//         />
-//       </div>
-//       <div>
-//         <button className="btn" onClick={() => setIsActive(!isActive)}>
-//           {isActive ? "Pause" : "Start"}
-//         </button>
-//         <button className="btn" onClick={stopTimer}>
-//           Reset
-//         </button>
-//       </div>
-//     </div>
-//   );
-// };
 // const [minutes, setMinute] = useState("00");
 // const [seconds, setSecond] = useState("00");
 // const [isActive, setIsActive] = useState(false);

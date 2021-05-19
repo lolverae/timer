@@ -57,6 +57,7 @@ const TimerSettings = () => {
         value={minutes}
         onChange={(e) => setMinute(e.target.value)}
       />
+      :
       <input
         className="number-input"
         type="number"
