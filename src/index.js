@@ -10,9 +10,11 @@ import "./QuantityPicker.css";
 import "./App.css";
 
 const App = () => {
-  const theme = useState("darkblue");
+  const expoName = useState();
+  const presentatorName = useState();
+
   return (
-    <settingsContext.Provider value={theme}>
+    <settingsContext.Provider value={(expoName, presentatorName)}>
       <Router>
         <header>
           <Link to="/">
