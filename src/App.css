@@ -196,6 +196,19 @@ header {
   outline: 0;
   box-shadow: 0 0 40px 40px #333 inset;
 }
+.number-input {
+  text-align: center;
+  height: 2em;
+  width: 5rem;
+  font-size: 2rem;
+  background-color: transparent;
+  border: 0;
+  margin: 10px;
+  padding: 10px;
+}
+.number-input:hover {
+  color: #eeeeee;
+}
 
 /* @media only screen and (max-width: 1129px) {
   header {
