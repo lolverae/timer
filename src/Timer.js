@@ -4,14 +4,13 @@ import TimerDisplay from "./TimerDisplay";
 import TimerButton from "./TimerButton";
 import TimerSettings from "./TimerSettings";
 import * as timerStates from "./timerStates";
-
 class Timer extends Component {
   constructor() {
     super();
 
     this.state = {
-      currentTime: moment.duration(25, "minutes"),
-      baseTime: moment.duration(25, "minutes"),
+      currentTime: moment.duration(0, "minutes"),
+      baseTime: moment.duration(0, "minutes"),
       timerState: timerStates.NOT_SET,
       timer: null,
     };
@@ -79,19 +78,34 @@ class Timer extends Component {
   render() {
     return (
       <div>
-        <TimerDisplay
-          currentTime={this.state.currentTime}
-          timerState={this.state.timerState}
-        />
-        <TimerButton
-          startTimer={this.startTimer}
-          stopTimer={this.stopTimer}
-          timerState={this.state.timerState}
-        />
-        {this.state.timerState !== timerStates.RUNNING && (
-          <TimerSettings
-            baseTime={this.state.baseTime}
-            setBaseTime={this.setBaseTime}
+        <div>
+          {this.state.timerState !== timerStates.RUNNING &&
+            this.state.timerState !== timerStates.COMPLETE && (
+              <TimerSettings
+                baseTime={this.state.baseTime}
+                setBaseTime={this.setBaseTime}
+              />
+            )}
+          {this.state.timerState !== timerStates.NOT_SET &&
+            this.state.timerState !== timerStates.COMPLETE && (
+              <TimerDisplay
+                currentTime={this.state.currentTime}
+                timerState={this.state.timerState}
+              />
+            )}
+          {this.state.timerState === timerStates.COMPLETE && (
+            <span>
+              <h1>¡En un momento comenzamos! 🚀✨</h1>
+            </span>
+          )}
+        </div>
+
+        {this.state.timerState !==
+          (timerStates.RUNNING || timerStates.NOT_SET) && (
+          <TimerButton
+            startTimer={this.startTimer}
+            stopTimer={this.stopTimer}
+            timerState={this.state.timerState}
           />
         )}
       </div>

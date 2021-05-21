@@ -9,7 +9,6 @@ const leftPad = (val) => {
 
 const TimerDisplay = (props) => (
   <div>
-    <div>{props.timerState === timerStates.COMPLETE}</div>
     <div>
       <h2>
         {`${leftPad(props.currentTime.get("minutes"))}:${leftPad(

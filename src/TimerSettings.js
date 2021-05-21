@@ -3,6 +3,9 @@ import { Component } from "react";
 class TimerSettings extends Component {
   constructor() {
     super();
+    this.state = { value: "" };
+    this.handleNames = this.handleNames.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
 
     this.handleChange = this.handleChange.bind(this);
   }
@@ -20,11 +23,29 @@ class TimerSettings extends Component {
 
     this.props.setBaseTime(newBaseTime);
   }
+  handleNames(event) {
+    this.setState({ value: event.target.value });
+  }
+
+  handleSubmit(event) {
+    alert("A name was submitted: " + this.state.value);
+    event.preventDefault();
+  }
+
   render() {
     return (
       <div>
-        <h2>Set Timer</h2>
-
+        {/* <form onSubmit={this.handleSubmit}>
+          <label>
+            Name:
+            <input
+              type="text"
+              value={this.state.value}
+              onChange={this.handleNames}
+            />
+          </label>
+          <input type="submit" value="Submit" />
+        </form> */}
         <div>
           <input
             className="number-input"
