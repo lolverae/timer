@@ -1,17 +1,16 @@
 import { Component } from "react";
 
 class TimerSettings extends Component {
-  constructor() {
-    super();
-    this.state = { value: "" };
+  constructor(props) {
+    super(props);
     this.handleNames = this.handleNames.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-
     this.handleChange = this.handleChange.bind(this);
+    this.state = { temperature: "" };
   }
 
   handleChange(ev) {
     const newBaseTime = this.props.baseTime;
+    console.log(newBaseTime);
     if (ev.target.id === "minutes")
       newBaseTime
         .subtract(newBaseTime.get("minutes"), "minutes")
@@ -24,28 +23,28 @@ class TimerSettings extends Component {
     this.props.setBaseTime(newBaseTime);
   }
   handleNames(event) {
-    this.setState({ value: event.target.value });
-  }
+    const newExpoName = event.target.value;
 
-  handleSubmit(event) {
-    alert("A name was submitted: " + this.state.value);
-    event.preventDefault();
+    this.props.setExpoName(newExpoName);
   }
 
   render() {
     return (
       <div>
-        {/* <form onSubmit={this.handleSubmit}>
-          <label>
-            Name:
-            <input
-              type="text"
-              value={this.state.value}
-              onChange={this.handleNames}
-            />
+        <div className="settings-text-input">
+          <input
+            type="text"
+            required
+            id="value"
+            autoComplete="off"
+            defaultValue={this.props.expoName}
+            onChange={this.handleNames}
+          />
+
+          <label htmlFor="text" className="label-name">
+            <span className="content-name">Nombre de la presentación</span>
           </label>
-          <input type="submit" value="Submit" />
-        </form> */}
+        </div>
         <div>
           <input
             className="number-input"

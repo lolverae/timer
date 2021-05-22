@@ -13,12 +13,15 @@ class Timer extends Component {
       baseTime: moment.duration(0, "minutes"),
       timerState: timerStates.NOT_SET,
       timer: null,
+      expoName: "",
+      currentExpoName: "Anda, ponle tiempo 😉",
     };
 
     this.setBaseTime = this.setBaseTime.bind(this);
     this.startTimer = this.startTimer.bind(this);
     this.stopTimer = this.stopTimer.bind(this);
     this.reduceTimer = this.reduceTimer.bind(this);
+    this.setExpoName = this.setExpoName.bind(this);
   }
 
   setBaseTime(newBaseTime) {
@@ -27,7 +30,12 @@ class Timer extends Component {
       currentTime: newBaseTime,
     });
   }
-
+  setExpoName(newExpoName) {
+    this.setState({
+      expoName: newExpoName,
+      currentExpoName: newExpoName,
+    });
+  }
   startTimer() {
     this.setState({
       timerState: timerStates.RUNNING,
@@ -42,6 +50,7 @@ class Timer extends Component {
 
     this.setState({
       timerState: timerStates.NOT_SET,
+
       timer: null,
       currentTime: moment.duration(this.state.baseTime),
     });
@@ -57,10 +66,12 @@ class Timer extends Component {
     }
 
     const newTime = moment.duration(this.state.currentTime);
+
     newTime.subtract(1, "second");
 
     this.setState({
       currentTime: newTime,
+      newExpoName: "lul",
     });
   }
 
@@ -78,28 +89,29 @@ class Timer extends Component {
   render() {
     return (
       <div>
+        <div></div>
         <div>
-          {this.state.timerState !== timerStates.RUNNING &&
-            this.state.timerState !== timerStates.COMPLETE && (
-              <TimerSettings
-                baseTime={this.state.baseTime}
-                setBaseTime={this.setBaseTime}
-              />
-            )}
-          {this.state.timerState !== timerStates.NOT_SET &&
-            this.state.timerState !== timerStates.COMPLETE && (
-              <TimerDisplay
-                currentTime={this.state.currentTime}
-                timerState={this.state.timerState}
-              />
-            )}
+          {this.state.timerState === timerStates.NOT_SET && (
+            <TimerSettings
+              baseTime={this.state.baseTime}
+              setBaseTime={this.setBaseTime}
+              expoName={this.state.expoName}
+              setExpoName={this.setExpoName}
+            />
+          )}
+          {this.state.timerState === timerStates.RUNNING && (
+            <TimerDisplay
+              currentTime={this.state.currentTime}
+              timerState={this.state.timerState}
+              currentExpoName={this.state.currentExpoName}
+            />
+          )}
           {this.state.timerState === timerStates.COMPLETE && (
             <span>
               <h1>¡En un momento comenzamos! 🚀✨</h1>
             </span>
           )}
         </div>
-
         {this.state.timerState !==
           (timerStates.RUNNING || timerStates.NOT_SET) && (
           <TimerButton
